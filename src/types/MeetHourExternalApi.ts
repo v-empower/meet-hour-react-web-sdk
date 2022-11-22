@@ -1,4 +1,4 @@
-import { IMeetHourExternalAPI } from '.';
+import { IMeetHourExternalApi } from '.';
 
 export type MeetHourExternalAPI = {
     new (
@@ -103,5 +103,5 @@ export type MeetHourExternalAPI = {
              */
             parentNode?: HTMLDivElement | null
         }
-    ): IMeetHourExternalAPI
+    ): IMeetHourExternalApi
 };

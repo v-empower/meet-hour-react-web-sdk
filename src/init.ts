@@ -11,11 +11,12 @@ const loadExternalApi = async (
     }
 
     const script: HTMLScriptElement = document.createElement('script');
-    const releaseParam: string = release ? `?release=${release}` : '';
-    const appIdPath: string = appId ? `${appId}/` : '';
+    const APIURL: string = domain ? `api.${domain}` : 'api.meethour.io';
+    const releaseParam: string = release ? `?release=${release}` : 'v2.4.3';
+    const appIdPath: string = appId ? `${appId}/` : 'libs';
 
     script.async = true;
-    script.src = `https://${domain}/${appIdPath}external_api.js${releaseParam}`;
+    script.src = `https:/${APIURL}/${appIdPath}/${releaseParam}/external_api.min.js`;
     script.onload = () => resolve(window.MeetHourExternalAPI);
     script.onerror = () => reject(new Error(`Script load error: ${script.src}`));
     document.head.appendChild(script as Node);

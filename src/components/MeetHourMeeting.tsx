@@ -9,7 +9,7 @@ import React, {
 
 import { DEFAULT_DOMAIN } from '../constants';
 import { fetchExternalApi } from '../init';
-import { IMeetHourExternalAPI, IMeetHourMeetingProps, MeetHourExternalAPI } from '../types';
+import { IMeetHourExternalApi, IMeetHourMeetingProps, MeetHourExternalAPI } from '../types';
 import { generateComponentId, getAppId } from '../utils';
 
 /**
@@ -46,7 +46,7 @@ const MeetHourMeeting = ({
     const [ loading, setLoading ] = useState(true);
     const [ apiLoaded, setApiLoaded ] = useState(false);
     const externalApi = useRef<MeetHourExternalAPI>();
-    const apiRef = useRef<IMeetHourExternalAPI>();
+    const apiRef = useRef<IMeetHourExternalApi>();
     const meetingRef = useRef<HTMLDivElement>(null);
     const componentId = useMemo(() =>
         generateComponentId('MeetHourMeeting')

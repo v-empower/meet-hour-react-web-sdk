@@ -7,5 +7,5 @@ declare global {
 
 export { MeetHourExternalAPI } from './MeetHourExternalAPI';
 export { default as IMeetHourMeetingProps } from './IMeetHourMeetingProps';
-export { default as IMeetHourExternalAPI } from './IMeetHourExternalAPI';
+export { default as IMeetHourExternalApi } from './IMeetHourExternalApi';
 

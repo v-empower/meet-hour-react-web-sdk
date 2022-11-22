@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IMeetHourExternalAPI from './IMeetHourExternalAPI';
+import IMeetHourExternalApi from './IMeetHourExternalApi';
 
 /**
  * The the base props for React {@code Components} that load the Meet Hour IFrame.
@@ -85,7 +85,7 @@ export default interface IMeetingProps {
     /**
      * The external API reference for events and commands.
      */
-    onApiReady?: (api: IMeetHourExternalAPI) => void;
+    onApiReady?: (api: IMeetHourExternalApi) => void;
 
     /**
      * The callback for when the meeting is ready to be closed.

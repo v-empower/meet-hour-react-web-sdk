@@ -1,6 +1,6 @@
 import EventEmitter from 'events';
 
-export default interface IMeetHourExternalAPI extends EventEmitter {
+export default interface IMeetHourExternalApi extends EventEmitter {
 
     /**
      * Adds an event listener to the Meet Hour External API.

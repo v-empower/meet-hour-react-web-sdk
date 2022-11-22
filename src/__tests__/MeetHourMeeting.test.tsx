@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { DEFAULT_DOMAIN } from '../constants';
 import { MeetHourMeeting } from '../index';
-import { IMeetHourExternalAPI } from '../types';
+import { IMeetHourExternalApi } from '../types';
 
 /* eslint-disable no-undef */
 
@@ -13,7 +13,7 @@ describe('MeetHourMeeting component', () => {
         const props = {
             domain: DEFAULT_DOMAIN,
             roomName: 'TestingMeetHourMeetingComponent',
-            onApiReady: (externalApi: IMeetHourExternalAPI) => {
+            onApiReady: (externalApi: IMeetHourExternalApi) => {
                 console.log(externalApi);
             }
         };
@@ -31,8 +31,8 @@ describe('MeetHourMeeting component', () => {
     it('should render iframe', () => {
         const props = {
             domain: DEFAULT_DOMAIN,
-            roomName: 'TestingMeetHourIFrame',
-            onApiReady: (externalApi: IMeetHourExternalAPI) => {
+            roomName: 'TestingMeetIFrame',
+            onApiReady: (externalApi: IMeetHourExternalApi) => {
                 console.log(externalApi);
             }
         };
