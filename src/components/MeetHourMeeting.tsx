@@ -61,6 +61,7 @@ const MeetHourMeeting = ({
             .catch((e: Error) => console.error(e.message));
     }, []);
 
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const loadIFrame = useCallback((MeetHourExternalAPI: MeetHourExternalAPI) => {
         apiRef.current = new MeetHourExternalAPI(domain, {
             roomName,
