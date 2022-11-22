@@ -1,6 +1,6 @@
 import { fetchExternalApi } from '../init';
 
-const SUCCESS_DOMAIN = 'meet.jit.si';
+const SUCCESS_DOMAIN = 'meethour.io';
 const ERROR_DOMAIN = 'error';
 
 /* eslint-disable no-undef */
