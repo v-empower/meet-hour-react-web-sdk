@@ -10,24 +10,38 @@ export default interface IMeetingProps {
     /**
      * The name of the room to join.
      */
+    apiBaseURL: string;
+
+    /**
+     * API Key to load the External API for Join Meeting.
+     */
+    apiKey: string;
+
+    /**
+     * The name of the room to join.
+     */
     roomName: string;
 
     /**
      * The JS object with overrides for options defined in the config.js file
-     * https://docs.v-empower.com/docs/MeetHour-API/31a282aa6ccc7-generate-jwt.
+     * https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt.
      */
     configOverwrite?: object;
 
     /**
      * The JS object with overrides for options defined in the interface_config.js file
-     * https://docs.v-empower.com/docs/MeetHour-API/31a282aa6ccc7-generate-jwt.
+     * https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt.
      */
     interfaceConfigOverwrite?: object;
-
     /**
-     * The JWT token.
+     *  The JWT token to join as Moderator.
      */
     jwt?: string;
+
+    /**
+     * Encrypted password to pass dynamically to the conference.
+     */
+    pcode?: string;
 
     /**
      * Object arrays that contain information about participants invited to a call.

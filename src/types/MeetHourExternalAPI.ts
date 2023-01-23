@@ -2,27 +2,22 @@ import { IMeetHourExternalApi } from '.';
 
 export type MeetHourExternalAPI = {
     new (
-
         /**
          * The domain used to build the conference URL.
          */
         domain: string,
-
         /**
          * The optional arguments for the IFrame.
          */
         options: {
-
             /**
              * The name of the room to join.
              */
             roomName?: string,
-
             /**
              * The created IFrame width.
              */
             width?: string | number,
-
             /**
              * The height for the created IFrame.
              */
@@ -39,11 +34,19 @@ export type MeetHourExternalAPI = {
              * https://docs.v-empower.com/docs/MeetHour-API/31a282aa6ccc7-generate-jwt.
              */
             interfaceConfigOverwrite?: object;
-
             /**
-             * The JWT token.
+             * API Key to load the External API for Join Meeting.
+             */
+            apiKey: string;
+            /**
+             * The JWT token to join as Moderator.
              */
             jwt?: string,
+
+            /**
+             * Encrypted password to pass dynamically to the conference.
+             */
+            pcode?: string,
 
             /**
              * The IFrame onload event handler.
@@ -93,8 +96,8 @@ export type MeetHourExternalAPI = {
             },
 
             /**
-             * The `stage.8x8.vc` or `8x8.vc` release version to test.
-             * Expects the following format: `release-1234`.
+             * 
+             * Expects the following format: `v2.4.5`.
              */
             release?: string,
 

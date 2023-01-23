@@ -1,6 +1,3 @@
 module.exports = {
-    'extends': [
-        '@jitsi/eslint-config',
-        '@jitsi/eslint-config/typescript'
-    ]
+  extends: ["@jitsi/eslint-config", "@jitsi/eslint-config/typescript"],
 };
