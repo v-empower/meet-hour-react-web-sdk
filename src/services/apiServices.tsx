@@ -163,7 +163,7 @@ class ApiServices {
     /**
  * getRefreshToken() : To get new token from refresh token
  * @param {string} token - access token to make API calls.
- * @param {string} body - API call body.
+ * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
     static async getRefreshToken(token: string, body: RefreshTokenType) {
@@ -182,7 +182,7 @@ class ApiServices {
     /**
  * generateJwt() : JWT is needed to join the meeting with user information. Usually used if Moderator is joining.
  * @param {string} token - access token to make API calls.
- * @param {string} body - API call body.
+ * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
     static async generateJwt(token: string, body: GenerateJwtType) {
@@ -192,7 +192,7 @@ class ApiServices {
     /**
  * addContact() : To add contact in Meet Hour Database.
  * @param {string} token - access token to make API calls.
- * @param {string} body - API call body.
+ * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
     static async addContact(token: string, body: AddContactType) {
@@ -211,7 +211,7 @@ class ApiServices {
     /**
  * contactsList() : To get all the contacts available on Meet Hour account.
  * @param {string} token - access token to make API calls.
- * @param {string} body - API call body.
+ * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
     static async contactsList(token: string, body: ContactsType) {
@@ -221,17 +221,29 @@ class ApiServices {
     /**
  * editContact() : To edit a specific contact.
  * @param {string} token - access token to make API calls.
- * @param {string} body - API call body.
+ * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
     static async editContact(token: string, body: EditContactType) {
         return ApiServices.postFetch(token, 'edit_contact', body);
     }
 
-    // Meeting API calling functions are declared below :
+    /**
+ * scheduleMeeting() : Function to hit a Schedule Meeting API.
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async scheduleMeeting(token: string, body: ScheduleMeetingType) {
         return ApiServices.postFetch(token, 'schedule_meeting', body);
     }
+
+    /**
+ * upcomingMeetings() : Function to hit a Schedule Meeting API.
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async upcomingMeetings(
             token: string,
             body: {
@@ -241,6 +253,13 @@ class ApiServices {
     ) {
         return ApiServices.postFetch(token, 'upcoming_meeting', body);
     }
+
+    /**
+ * archiveMeeting() : To get archive Meeting
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async archiveMeeting(
             token: string,
             body: {
@@ -249,6 +268,13 @@ class ApiServices {
     ) {
         return ApiServices.postFetch(token, 'archive_meeting', body);
     }
+
+    /**
+ * missedMeetings() : To get all the Missed Meeting.
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async missedMeetings(
             token: string,
             body: {
@@ -258,6 +284,13 @@ class ApiServices {
     ) {
         return ApiServices.postFetch(token, 'missed_meetings', body);
     }
+
+    /**
+ * completedMeetings() : To get all the Completed Meetings.
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async completedMeetings(
             token: string,
             body: {
@@ -267,16 +300,36 @@ class ApiServices {
     ) {
         return ApiServices.postFetch(token, 'completed_meetings', body);
     }
+
+    /**
+ * editMeeting() : To Edit a specific meeting.
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async editMeeting(token: string, body: EditMeetingType) {
         return ApiServices.postFetch(token, 'edit_meeting', body);
     }
+
+    /**
+ * viewMeeting() : To get information of specific meeting.
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async viewMeeting(token: string, body: { meeting_id: string }) {
         return ApiServices.postFetch(token, 'view_meeting', body);
     }
+
+    /**
+ * recordingsList() : To get all the recording list.
+ * @param {string} token - access token to make API calls.
+ * @param {any} body - API call body.
+ * @returns {string} response data that we get from API.
+ */
     static async recordingsList(token: string, body: RecordingsList) {
         return ApiServices.postFetch(token, 'recordings_list', body);
     }
 
-    // Meeting API calling functions are declared above :
 }
 export default ApiServices;
