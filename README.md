@@ -46,7 +46,7 @@ npm install meet-hour-react-web-sdk
 ### API End Points Supported
 
 Important points:
-=> Instead of '{version}', you to pass our latest version whenever you call the given functions. Currently we are using v1.2 Same version applies to the below calls.
+=> Instead of '{version}', you to pass our latest version whenever you call the given functions. Currently we are using v1.1 Same version applies to the below calls.
 => In the token section, you need to pass the received access token which is received when login api is hit, for making further api calls.
 => You can make API calls by passing required properties only. But, to meet special requirements you can pass the rest properties, according to your need. For more details go to https://docs.v-empower.com/docs/MeetHour-API then click on APIS section to get all the information related to each api call.
 
