@@ -43,7 +43,82 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 npm install meet-hour-react-web-sdk
 ```
 
-### APICalls valid
+### API End Points Supported
+
+Important points:
+=> Instead of '{version}', you to pass our latest version whenever you call the given functions. Currently we are using v1.2 Same version applies to the below calls.
+=> In the token section, you need to pass the received access token which is received when login api is hit, for making further api calls.
+=> You can make API calls by passing required properties only. But, to meet special requirements you can pass the rest properties, according to your need. For more details go to https://docs.v-empower.com/docs/MeetHour-API then click on APIS section to get all the information related to each api call.
+
+1. This is the login function: login({ grant_type, client_id, client_secret, username, password})
+   => You have to pass respective values in the argument section. Hence, to get desired response.
+   => https://api.meethour.io/oauth/token
+
+2. To Generate JWT Token: generateJwt(token: string, body: GenerateJwtType)
+   =>https://api.meethour.io/api/{version}/getjwt
+
+3. To fetch User Details: userDetails(token: string)
+   => https://api.meethour.io/api/{version}/customer/user_details
+
+4. To fetch access Token using Refresh Token: getRefreshToken(token: string, body: RefreshTokenType)
+   => https://api.meethour.io/oauth/token
+
+5. To add a contact in Meet Hour database: addContact(token: string, body: AddContactType)
+   => https://api.meethour.io/api/{version}/customer/addcontact
+
+6. To get Timezones of various countries: timezone(token: string)
+   => https://api.meethour.io/api/{version}/getTimezone
+
+7. To get contacts from the Meet Hour Database: contactsList(token: string, body: ContactsType)
+   => https://api.meethour.io/api/{version}/customer/contacts
+
+8. To make changes in the existing contact details: editContact(token: string, body: EditContactType)
+   => https://api.meethour.io/api/{version}/customer/editcontact
+
+9. To schedule a meeting: scheduleMeeting(token: string, body: ScheduleMeetingType)
+   => https://api.meethour.io/api/{version}/meeting/schedulemeeting
+
+10. To edit an existing meeting: upcomingMeetings(token: string, body: {
+    limit: number;
+    page: number;
+    }
+    )
+    => https://api.meethour.io/api/{version}/meeting/upcomingmeetings
+
+11. To archive a meeting: archiveMeeting(
+    token: string,
+    body: {
+    id?: number;
+    }
+    )
+    => https://api.meethour.io/api/{version}/meeting/archivemeeting
+
+12. To get the details of a missed meeting: missedMeetings(
+    token: string,
+    body: {
+    limit: number;
+    page: number;
+    }
+    )
+    => https://api.meethour.io/api/{version}/meeting/missedmeetings
+
+13. To get completed meetings: completedMeetings(
+    token: string,
+    body: {
+    limit: number;
+    page: number;
+    }
+    )
+    => https://api.meethour.io/api/{version}/meeting/completedmeetings
+
+14. To edit an existing meeting: editMeeting(token: string, body: EditMeetingType)
+    => https://api.meethour.io/api/{version}/meeting/editmeeting
+
+15. To view a meeting: viewMeeting(token: string, body: { meeting_id: string })
+    => https://api.meethour.io/api/{version}/meeting/viewmeeting
+
+16. To get all the recordings list: recordingsList(token: string, body: RecordingsList)
+    => https://api.meethour.io/api/{version}/customer/videorecordinglist
 
 ### Modules
 
