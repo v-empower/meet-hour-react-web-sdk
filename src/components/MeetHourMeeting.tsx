@@ -122,7 +122,9 @@ const MeetHourMeeting = ({
         if (!loading || apiRef.current) {
             return null;
         }
-        //@ts-ignore
+
+
+        // @ts-ignore
         return <Spinner />;
     }, [ Spinner, apiRef.current ]);
 

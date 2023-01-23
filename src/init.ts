@@ -39,7 +39,7 @@ let scriptPromise: Promise<MeetHourExternalAPI>;
 export const fetchExternalApi = (
         domain: string = DEFAULT_DOMAIN,
         apiKey: string,
-        release?: string,
+        release?: string
 ): Promise<MeetHourExternalAPI> => {
     if (scriptPromise) {
         return scriptPromise;

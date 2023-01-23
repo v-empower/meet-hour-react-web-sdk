@@ -33,6 +33,7 @@ export default interface IMeetingProps {
      * https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt.
      */
     interfaceConfigOverwrite?: object;
+
     /**
      *  The JWT token to join as Moderator.
      */

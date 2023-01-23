@@ -1,3 +1,9 @@
+export interface UserObjectType {
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+}
+
 export default interface ScheduleMeetingType {
   meeting_name: string;
   agenda?: string;
@@ -38,8 +44,3 @@ export default interface ScheduleMeetingType {
   default_recording_storage?: string;
 }
 
-export interface UserObjectType {
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-}

@@ -1,3 +1,9 @@
+interface UserObjectType {
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+}
+
 export default interface EditMeeting {
   meeting_id: string;
   meeting_name?: string;
@@ -35,8 +41,3 @@ export default interface EditMeeting {
     | Array<number & UserObjectType>;
 }
 
-interface UserObjectType {
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-}
