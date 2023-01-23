@@ -1,7 +1,7 @@
 {
   "name": "meet-hour-react-web-sdk",
   "version": "2.0.1",
-  "description": "React SDK for the Meet Hour IFrame",
+  "description": "React SDK for the Meet Hour",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
