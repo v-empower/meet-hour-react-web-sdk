@@ -145,16 +145,16 @@ class ApiServices {
  * @returns {string} response data that we get from API.
  */
     static async login({
-        grantType = GRANT_TYPE,
-        clientID,
-        clientSecret,
+        grant_type = GRANT_TYPE,
+        client_id,
+        client_secret,
         username,
         password
     }: LoginType) {
         return ApiServices.postFetch('', 'login', {
-            grantType,
-            clientID,
-            clientSecret,
+            grant_type,
+            client_id,
+            client_secret,
             username,
             password
         });
@@ -211,7 +211,7 @@ class ApiServices {
     /**
  * contactsList() : To get all the contacts available on Meet Hour account.
  * @param {string} token - access token to make API calls.
- * @param {any} body - API call body.
+ * @param {ContactsType} body - API call body.
  * @returns {string} response data that we get from API.
  */
     static async contactsList(token: string, body: ContactsType) {
