@@ -5,7 +5,7 @@ declare global {
   }
 }
 
-export { MeetHourExternalAPI } from './MeetHourExternalAPI';
+export type { MeetHourExternalAPI } from './MeetHourExternalAPI';
 export { default as IMeetHourMeetingProps } from './IMeetHourMeetingProps';
 export { default as IMeetHourExternalApi } from './IMeetHourExternalApi';
 export { default as AddContactType } from './AddContactType';
