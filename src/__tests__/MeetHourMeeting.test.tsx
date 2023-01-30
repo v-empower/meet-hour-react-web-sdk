@@ -1,17 +1,19 @@
+/* eslint-disable */
+
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import * as React from 'react';
 
-import { DEFAULT_DOMAIN } from '../constants';
+import { API_BASE_URL, DEFAULT_DOMAIN } from '../constants';
 import { MeetHourMeeting } from '../index';
 import { IMeetHourExternalApi } from '../types';
-
-/* eslint-disable no-undef */
 
 describe('MeetHourMeeting component', () => {
     it('should render correctly', () => {
         const props = {
             domain: DEFAULT_DOMAIN,
+            apiBaseURL: API_BASE_URL,
+            apiKey: '653ca41a235215ed4531959c9b4b217b91c41324e1949aae9f09f5c4d505fcb6',
             roomName: 'TestingMeetHourMeetingComponent',
             onApiReady: (externalApi: IMeetHourExternalApi) => {
                 console.log(externalApi);
@@ -32,6 +34,8 @@ describe('MeetHourMeeting component', () => {
         const props = {
             domain: DEFAULT_DOMAIN,
             roomName: 'TestingMeetIFrame',
+            apiBaseURL: API_BASE_URL,
+            apiKey: '653ca41a235215ed4531959c9b4b217b91c41324e1949aae9f09f5c4d505fcb6',
             onApiReady: (externalApi: IMeetHourExternalApi) => {
                 console.log(externalApi);
             }

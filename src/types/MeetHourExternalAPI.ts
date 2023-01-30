@@ -14,46 +14,15 @@ export type MeetHourExternalAPI = {
         options: {
 
             /**
-             * The name of the room to join.
+             * API Key to load the External API for Join Meeting.
              */
-            roomName?: string,
-
-            /**
-             * The created IFrame width.
-             */
-            width?: string | number,
-
-            /**
-             * The height for the created IFrame.
-             */
-            height?: string | number,
+            apiKey: string;
 
             /**
              * The JS object with overrides for options defined in the config.js file
              * https://docs.v-empower.com/docs/MeetHour-API/31a282aa6ccc7-generate-jwt.
              */
-            configOverwrite?: object,
-
-            /**
-             * The JS object with overrides for options defined in the interface_config.js file
-             * https://docs.v-empower.com/docs/MeetHour-API/31a282aa6ccc7-generate-jwt.
-             */
-            interfaceConfigOverwrite?: object;
-
-            /**
-             * The JWT token.
-             */
-            jwt?: string,
-
-            /**
-             * The IFrame onload event handler.
-             */
-            onload?: () => void,
-
-            /**
-             * Object arrays that contain information about participants invited to a call.
-             */
-            invitees?: [],
+            configOverwrite?: object;
 
             /**
              * Information map about the devices used in a call.
@@ -63,18 +32,65 @@ export type MeetHourExternalAPI = {
                 /**
                  * The label of the device used for audio input.
                  */
-                audioInput: string,
+                audioInput: string;
 
                 /**
                  * The label of the device  used for audio output.
                  */
-                audioOutput: string,
+                audioOutput: string;
 
                 /**
                  * The label of the device used for video input.
                  */
-                videoInput: string
-            },
+                videoInput: string;
+            };
+
+            /**
+             * The height for the created IFrame.
+             */
+            height?: string | number;
+
+            /**
+             * The JS object with overrides for options defined in the interface_config.js file
+             * https://docs.v-empower.com/docs/MeetHour-API/31a282aa6ccc7-generate-jwt.
+             */
+            interfaceConfigOverwrite?: object;
+
+            /**
+             * Object arrays that contain information about participants invited to a call.
+             */
+            invitees?: [];
+
+            /**
+             * The JWT token to join as Moderator.
+             */
+            jwt?: string;
+
+            /**
+             * The IFrame onload event handler.
+             */
+            onload?: () => void;
+
+            /**
+             * The HTML DOM Element where the IFrame is added as a child.
+             */
+            parentNode?: HTMLDivElement | null;
+
+            /**
+             * Encrypted password to pass dynamically to the conference.
+             */
+            pcode?: string;
+
+            /**
+             *
+             * Expects the following format: `v2.4.5`.
+             */
+            release?: string;
+
+            /**
+             * The name of the room to join.
+             */
+            roomName?: string;
 
             /**
              * The JS object that contains information about the participant starting the meeting.
@@ -84,24 +100,18 @@ export type MeetHourExternalAPI = {
                 /**
                  * The participant display name.
                  */
-                displayName: string,
+                displayName: string;
 
                 /**
                  * The participant email address.
                  */
-                email: string
-            },
+                email: string;
+            };
 
             /**
-             * The `stage.8x8.vc` or `8x8.vc` release version to test.
-             * Expects the following format: `release-1234`.
+             * The created IFrame width.
              */
-            release?: string,
-
-            /**
-             * The HTML DOM Element where the IFrame is added as a child.
-             */
-            parentNode?: HTMLDivElement | null
+            width?: string | number;
         }
-    ): IMeetHourExternalApi
+    ): IMeetHourExternalApi;
 };

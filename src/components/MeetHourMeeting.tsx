@@ -10,7 +10,7 @@ import React, {
 import { DEFAULT_DOMAIN } from '../constants';
 import { fetchExternalApi } from '../init';
 import { IMeetHourExternalApi, IMeetHourMeetingProps, MeetHourExternalAPI } from '../types';
-import { generateComponentId, getAppId } from '../utils';
+import { generateComponentId } from '../utils';
 
 /**
  * Returns the MeetHourMeeting Component with access to a custom External API
@@ -22,18 +22,20 @@ import { generateComponentId, getAppId } from '../utils';
   ```js
     <MeetHourMeeting
         domain='meethour.io'
-        roomName: 'TestingMeetHourMeetingComponent'
-        spinner={CustomSpinner}
-        onApiReady={(externalApi) => console.log(externalApi)}
+        roomName: 'TestRoom'
+        apiKey: '' // This you will get in Developers Page.
     />
   ```
  */
 const MeetHourMeeting = ({
     domain = DEFAULT_DOMAIN,
+    apiBaseURL,
+    apiKey,
     roomName,
     configOverwrite,
     interfaceConfigOverwrite,
     jwt,
+    pcode,
     invitees,
     devices,
     userInfo,
@@ -53,7 +55,7 @@ const MeetHourMeeting = ({
     , [ generateComponentId ]);
 
     useEffect(() => {
-        fetchExternalApi(domain, release, getAppId(roomName))
+        fetchExternalApi(apiBaseURL, apiKey, release)
             .then((api: MeetHourExternalAPI) => {
                 externalApi.current = api;
                 setApiLoaded(true);
@@ -68,6 +70,8 @@ const MeetHourMeeting = ({
             configOverwrite,
             interfaceConfigOverwrite,
             jwt,
+            apiKey,
+            pcode,
             invitees,
             devices,
             userInfo,
@@ -91,10 +95,13 @@ const MeetHourMeeting = ({
         onReadyToClose,
         getIFrameRef,
         domain,
+        apiBaseURL,
+        apiKey,
         roomName,
         configOverwrite,
         interfaceConfigOverwrite,
         jwt,
+        pcode,
         invitees,
         devices,
         userInfo
@@ -116,6 +123,8 @@ const MeetHourMeeting = ({
             return null;
         }
 
+
+        // @ts-ignore
         return <Spinner />;
     }, [ Spinner, apiRef.current ]);
 

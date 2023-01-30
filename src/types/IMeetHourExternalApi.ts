@@ -39,7 +39,7 @@ export default interface IMeetHourExternalApi extends EventEmitter {
      * values are the arguments for the command.
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    executeCommands: (commands: { [command: string]: any[] | undefined[] }) => void;
+    executeCommands: (commands: { [command: string]: any[] | undefined[]; }) => void;
 
     /**
      * Returns Promise that resolves with a list of available devices.
@@ -91,7 +91,7 @@ export default interface IMeetHourExternalApi extends EventEmitter {
      * Resolves with the current livestream URL if exists, with
      * undefined if not, and rejects on failure.
      */
-    getLivestreamUrl: () => Promise<string | undefined>
+    getLivestreamUrl: () => Promise<string | undefined>;
 
     /**
      * Returns the number of participants in the conference.
@@ -196,13 +196,13 @@ export default interface IMeetHourExternalApi extends EventEmitter {
         /**
          * The payload of the event.
          */
-        data: object,
+        data: object;
 
         /**
          * The JID of the sender of the event.
          * Needed when a reply is to be sent regarding the event.
          */
-        form: string
+        form: string;
     }) => void;
 
     /**
@@ -239,40 +239,40 @@ export default interface IMeetHourExternalApi extends EventEmitter {
     startRecording: (options: {
 
         /**
-         * The recording mode.
-         */
-        mode: 'file' | 'stream',
-
-        /**
          * The dropbox oauth2 token.
          */
-        dropboxToken: string,
+        dropboxToken: string;
+
+        /**
+         * The recording mode.
+         */
+        mode: 'file' | 'stream';
+
+        /**
+         * The RTMP broacast ID.
+         */
+        rtmpBroadcastID: string;
+
+        /**
+         * The RTMP stream key.
+         */
+        rtmpStreamKey: string;
 
         /**
          * Whether the recording should be shared with the participants or not.
          * Only applies to certain Meet Hour deploys.
          */
-        shouldShare: boolean,
-
-        /**
-         * The RTMP stream key.
-         */
-        rtmpStreamKey: string,
-
-        /**
-         * The RTMP broacast ID.
-         */
-        rtmpBroadcastID: string,
-
-        /**
-         * The youtube stream key.
-         */
-        youtubeStreamKey: string,
+        shouldShare: boolean;
 
         /**
          * The youtube broacast ID.
          */
-        youtubeBroadcastID: string
+        youtubeBroadcastID: string;
+
+        /**
+         * The youtube stream key.
+         */
+        youtubeStreamKey: string;
     }) => void;
 
     /**
