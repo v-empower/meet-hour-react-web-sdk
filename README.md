@@ -29,7 +29,7 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 
 ## Install
 
-```bash
+```
 npm install meet-hour-react-web-sdk
 
 import ApiServices from "meet-hour-react-web-sdk";
@@ -51,7 +51,7 @@ Important points:
 
 1. To Get Access Token Endpoint : => https://docs.v-empower.com/docs/MeetHour-API/a44a7d7669f91-user-login-get-access-token
 
-        ```bash
+        ```
             ApiServices.login({
                 grant_type, client_id, client_secret, username, password
             });
@@ -60,7 +60,7 @@ Important points:
 
 2. To schedule a meeting: => https://docs.v-empower.com/docs/MeetHour-API/2de4b757a6312-meeting-schedule-meeting
 
-        ```bash
+        ```
             ApiServices. scheduleMeeting(token: string, body: ScheduleMeetingType)
 
             type ScheduleMeetingType {
@@ -113,7 +113,7 @@ Important points:
 
 3. To Generate JWT Token Endpoint => https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
     
-    ```bash
+    ```
     ApiServices.generateJwt(token: string, body: GenerateJwtType)
 
        type GenerateJwtType {
@@ -163,13 +163,13 @@ Important points:
 
 4. To fetch User Details: => https://docs.v-empower.com/docs/MeetHour-API/ff9d0e37d9191-user-details
 
-    ```bash
+    ```
         ApiServices.userDetails(token: string)
     ```
 
 5. To fetch access Token using Refresh Token: => https://docs.v-empower.com/docs/MeetHour-API/d851be1af9804-get-access-token-using-refresh-token
 
-    ```bash
+    ```
         ApiServices.getRefreshToken(token: string, body: RefreshTokenType)
 
         type RefreshTokenType {
@@ -182,7 +182,7 @@ Important points:
 
 6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
 
-    ```bash
+    ```
         ApiServices.addContact(token: string, body: AddContactType)
 
         type AddContactType {
@@ -198,14 +198,14 @@ Important points:
 
 7. To get Timezones of various countries: => https://docs.v-empower.com/docs/MeetHour-API/c688c29bce9b9-timezone-list
 
-    ```bash
+    ```
         ApiServices.timezone(token: string)
 
     ```
 
 8. To get list of all the contacts in your Meet Hour account: => https://api.meethour.io/api/{version}/customer/contacts
 
-    ```bash
+    ```
         ApiServices.contactsList(token: string, body: ContactsType)
 
         type ContactsType {
@@ -218,7 +218,7 @@ Important points:
 
 9. To make changes in the existing contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
 
-       ```bash
+       ```
         ApiServices.editContact(token: string, body: EditContactType)
 
         type EditContactType {
@@ -236,7 +236,7 @@ Important points:
 
 10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
 
-    ```bash
+    ```
         ApiServices.upcomingMeetings(token: string, body: {
             limit: number;
             page: number;
@@ -245,7 +245,7 @@ Important points:
 
 11. To archive a meeting: => https://docs.v-empower.com/docs/MeetHour-API/1dd64523cc6bf-archive-meeting
 
-    ```bash
+    ```
         ApiServices.archiveMeeting(
                 token: string,
                 body: {
@@ -255,7 +255,7 @@ Important points:
 
 12. To get the details of a missed meeting: => https://docs.v-empower.com/docs/MeetHour-API/92998e2dda102-missed-meetings
 
-    ```bash
+    ```
         ApiServices.missedMeetings(
             token: string,
             body: {
@@ -266,7 +266,7 @@ Important points:
 
 13. To get completed meetings: => https://docs.v-empower.com/docs/MeetHour-API/aa9ef6a678250-completed-meetings
 
-    ```bash
+    ```
         ApiServices.completedMeetings(
             token: string,
             body: {
@@ -277,7 +277,7 @@ Important points:
 
 14. To edit an existing meeting: => https://docs.v-empower.com/docs/MeetHour-API/5dedde36380b4-meeting-edit-meeting
 
-    ```bash
+    ```
         ApiServices.editMeeting(token: string, body: EditMeetingType)
 
         type EditMeeting {
@@ -326,7 +326,7 @@ Important points:
 
 15. To view a meeting: => https://docs.v-empower.com/docs/MeetHour-API/7e9a0a1e0da7f-meeting-view-meeting
 
-    ```bash
+    ```
         ApiServices.viewMeeting(
             token: string, 
             body: { meeting_id: string }
@@ -336,7 +336,7 @@ Important points:
 16. To get all the recordings list: => https://docs.v-empower.com/docs/MeetHour-API/ce7c4fd8cae7e-recording-list
 
 
-    ```bash
+    ```
         ApiServices.recordingsList(token: string, body: RecordingsList)
 
         type RecordingsList {
