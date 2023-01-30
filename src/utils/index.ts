@@ -30,7 +30,7 @@ export const getAppId = (roomName: string): string | undefined => {
     }
 
     return roomParts[0];
-}
+};
 
 let instancesCounter = 0;
 

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 
 import { API_VERSION, GRANT_TYPE } from '../constants';
@@ -89,7 +90,7 @@ const substitutePathParameter = (
  * ApiServices Class.
  */
 class ApiServices {
-    private static BASE_URL: string = 'https://api.meethour.io';
+    private static BASE_URL = 'https://api.meethour.io';
 
     private static getHeaders = (token: string) => {
         return {
@@ -150,7 +151,7 @@ class ApiServices {
         client_secret,
         username,
         password
-    }: LoginType) {
+    }: LoginType): Promise<any> {
         return ApiServices.postFetch('', 'login', {
             grant_type,
             client_id,
@@ -166,7 +167,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async getRefreshToken(token: string, body: RefreshTokenType) {
+    static async getRefreshToken(token: string, body: RefreshTokenType): Promise<any> {
         return ApiServices.postFetch(token, 'refresh_token', body);
     }
 
@@ -175,7 +176,7 @@ class ApiServices {
  * @param {string} token - access token to make API calls.
  * @returns {string} response data that we get from API.
  */
-    static async userDetails(token: string) {
+    static async userDetails(token: string): Promise<any> {
         return ApiServices.postFetch(token, 'user_details', '');
     }
 
@@ -185,7 +186,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async generateJwt(token: string, body: GenerateJwtType) {
+    static async generateJwt(token: string, body: GenerateJwtType): Promise<any> {
         return ApiServices.postFetch(token, 'get_jwt', body);
     }
 
@@ -195,7 +196,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async addContact(token: string, body: AddContactType) {
+    static async addContact(token: string, body: AddContactType): Promise<any> {
         return ApiServices.postFetch(token, 'add_contact', body);
     }
 
@@ -204,7 +205,7 @@ class ApiServices {
  * @param {string} token - access token to make API calls.
  * @returns {string} response data that we get from API.
  */
-    static async timezone(token: string) {
+    static async timezone(token: string): Promise<any> {
         return ApiServices.postFetch(token, 'timezone', {});
     }
 
@@ -214,7 +215,7 @@ class ApiServices {
  * @param {ContactsType} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async contactsList(token: string, body: ContactsType) {
+    static async contactsList(token: string, body: ContactsType): Promise<any> {
         return ApiServices.postFetch(token, 'contacts_list', body);
     }
 
@@ -224,7 +225,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async editContact(token: string, body: EditContactType) {
+    static async editContact(token: string, body: EditContactType): Promise<any> {
         return ApiServices.postFetch(token, 'edit_contact', body);
     }
 
@@ -234,7 +235,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async scheduleMeeting(token: string, body: ScheduleMeetingType) {
+    static async scheduleMeeting(token: string, body: ScheduleMeetingType): Promise<any> {
         return ApiServices.postFetch(token, 'schedule_meeting', body);
     }
 
@@ -250,7 +251,7 @@ class ApiServices {
       limit: number;
       page: number;
     }
-    ) {
+    ): Promise<any> {
         return ApiServices.postFetch(token, 'upcoming_meeting', body);
     }
 
@@ -263,9 +264,9 @@ class ApiServices {
     static async archiveMeeting(
             token: string,
             body: {
-      id?: number;
-    }
-    ) {
+                id?: number;
+            }
+    ): Promise<any> {
         return ApiServices.postFetch(token, 'archive_meeting', body);
     }
 
@@ -281,7 +282,7 @@ class ApiServices {
       limit: number;
       page: number;
     }
-    ) {
+    ): Promise<any> {
         return ApiServices.postFetch(token, 'missed_meetings', body);
     }
 
@@ -297,7 +298,7 @@ class ApiServices {
       limit: number;
       page: number;
     }
-    ) {
+    ): Promise<any> {
         return ApiServices.postFetch(token, 'completed_meetings', body);
     }
 
@@ -307,7 +308,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async editMeeting(token: string, body: EditMeetingType) {
+    static async editMeeting(token: string, body: EditMeetingType): Promise<any> {
         return ApiServices.postFetch(token, 'edit_meeting', body);
     }
 
@@ -317,7 +318,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async viewMeeting(token: string, body: { meeting_id: string }) {
+    static async viewMeeting(token: string, body: { meeting_id: string; }): Promise<any> {
         return ApiServices.postFetch(token, 'view_meeting', body);
     }
 
@@ -327,7 +328,7 @@ class ApiServices {
  * @param {any} body - API call body.
  * @returns {string} response data that we get from API.
  */
-    static async recordingsList(token: string, body: RecordingsList) {
+    static async recordingsList(token: string, body: RecordingsList): Promise<any> {
         return ApiServices.postFetch(token, 'recordings_list', body);
     }
 

@@ -8,5 +8,5 @@ module.exports = {
     'only': [
         './**/*.js',
         'node_modules/jest-runtime'
-    ]
+        ]
 };

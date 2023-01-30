@@ -1,6 +1,7 @@
+/* eslint-disable camelcase */
 export default interface RefreshTokenType {
-    grant_type: string,
-    client_id: string,
-    client_secret: string,
-    refresh_token: string
+    client_id: string;
+    client_secret: string;
+    grant_type: string;
+    refresh_token: string;
 }

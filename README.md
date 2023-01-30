@@ -1,6 +1,6 @@
 # meet-hour-react-web-sdk
 
-React SDK for Meet Hour Web (IFrame)
+React SDK for Meet Hour - (Typescript | Javascript Support)
 
 [Meet Hour - 100% free video conference solution](https://meethour.io)
 Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
@@ -31,7 +31,16 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 
 ```bash
 npm install meet-hour-react-web-sdk
+
+import ApiServices from "meet-hour-react-web-sdk";
+
 ```
+
+### Steps to Integrate
+1. Hit the login API (Details mentioned below)
+2. Hit the schedule a Meeting API (Details mentioned below)
+3. Hit the Generate JWT API (Details mentioned below) - To join as Moderator.
+4. Use Component <MeetHourMeeting> to show the conference page.
 
 ### API End Points Supported
 
@@ -40,86 +49,313 @@ Important points:
 => In the token section, you need to pass the received access token which is received when login api is hit, for making further api calls.
 => You can make API calls by passing required properties only. But, to meet special requirements you can pass the rest properties, according to your need. For more details go to https://docs.v-empower.com/docs/MeetHour-API then click on APIS section to get all the information related to each api call.
 
-1. This is the login function: login({ grant_type, client_id, client_secret, username, password})
+1. To Get Access Token Endpoint : => https://docs.v-empower.com/docs/MeetHour-API/a44a7d7669f91-user-login-get-access-token
+
+        ```bash
+            ApiServices.login({
+                grant_type, client_id, client_secret, username, password
+            });
+        ```
    => You have to pass respective values in the argument section. Hence, to get desired response.
-   => https://api.meethour.io/oauth/token
 
-2. To Generate JWT Token: generateJwt(token: string, body: GenerateJwtType)
-   =>https://api.meethour.io/api/{version}/getjwt
+2. To schedule a meeting: => https://docs.v-empower.com/docs/MeetHour-API/2de4b757a6312-meeting-schedule-meeting
 
-3. To fetch User Details: userDetails(token: string)
-   => https://api.meethour.io/api/{version}/customer/user_details
+        ```bash
+            ApiServices. scheduleMeeting(token: string, body: ScheduleMeetingType)
 
-4. To fetch access Token using Refresh Token: getRefreshToken(token: string, body: RefreshTokenType)
-   => https://api.meethour.io/oauth/token
+            type ScheduleMeetingType {
+                    agenda?: string;
+                    attend?:
+                        | Array<number>
+                        | Array<UserObjectType>
+                        | Array<UserObjectType | number>;
+                    default_recording_storage?: string;
+                    duration_hr?: number;
+                    duration_min?: number;
+                    enable_pre_registration?: number;
+                    endBy?: string;
+                    end_date_time?: string;
+                    end_times?: number;
+                    groups?: Array<number | string>;
+                    hostusers?:
+                        | Array<number>
+                        | Array<UserObjectType>
+                        | Array<UserObjectType | number>;
+                    instructions?: string;
+                    is_recurring?: number;
+                    is_show_portal?: number;
+                    meeting_agenda?: string;
+                    meeting_date: string;
+                    meeting_meridiem: string;
+                    meeting_name: string;
+                    meeting_time: string;
+                    meeting_topic?: string;
+                    monthlyBy?: string;
+                    monthlyByDay?: string;
+                    monthlyByWeekday?: string;
+                    monthlyByWeekdayIndex?: string;
+                    options?: Array<string>;
+                    passcode: string;
+                    recurring_type?: string;
+                    repeat_interval?: number;
+                    send_calendar_invite?: number;
+                    timezone: string;
+                    weeklyWeekDays?: number;
+                };
 
-5. To add a contact in Meet Hour database: addContact(token: string, body: AddContactType)
-   => https://api.meethour.io/api/{version}/customer/addcontact
 
-6. To get Timezones of various countries: timezone(token: string)
-   => https://api.meethour.io/api/{version}/getTimezone
+        type UserObjectType {
+                email?: string;
+                first_name?: string;
+                last_name?: string;
+            }
+        ```
 
-7. To get contacts from the Meet Hour Database: contactsList(token: string, body: ContactsType)
-   => https://api.meethour.io/api/{version}/customer/contacts
+3. To Generate JWT Token Endpoint => https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
+    
+    ```bash
+    ApiServices.generateJwt(token: string, body: GenerateJwtType)
 
-8. To make changes in the existing contact details: editContact(token: string, body: EditContactType)
-   => https://api.meethour.io/api/{version}/customer/editcontact
+       type GenerateJwtType {
+                config?: {
+                disableDeepLinking?: string;
+                dropboxappKey?: string;
+                dropboxredirectURI?: string;
+                enableClosePage?: string;
+                enableWelcomePage?: string;
+                fileRecordingsEnabled?: boolean;
+                liveStreamingEnabled?: boolean;
+                p2penabled?: boolean;
+                requireDisplayName?: string;
+                resolution?: number;
+                startAudioMuted?: number;
+                videoheightideal?: number;
+                videoheightmax?: number;
+                videoheightmin?: number;
+                videowidthideal?: number;
+                videowidthmax?: number;
+                videowidthmin?: number;
+                };
+                contact_id?: number;
+                meeting_id: string;
+                ui_config?: {
+                ANDROID_APP_PACKAGE?: string;
+                APP_NAME?: string;
+                APP_SCHEME?: string;
+                BRAND_WATERMARK_BACKGROUND?: string;
+                DEFAULT_LOGO_URL?: string;
+                ENABLE_MOBILE_BROWSER?: string;
+                HIDE_DEEP_LINKING_LOGO?: string;
+                MEET_HOUR_WATERMARK_LINK?: string;
+                MOBILE_APP_PROMO?: string;
+                MOBILE_DOWNLOAD_LINK_ANDROID?: string;
+                MOBILE_DOWNLOAD_LINK_IOS?: string;
+                NATIVE_APP_NAME?: string;
+                PROVIDER_NAME?: string;
+                SHOW_MEET_HOUR_WATERMARK?: string;
+                disablePrejoinFooter?: string;
+                disablePrejoinHeader?: string;
+                toolbar_buttons?: Array<string>;
+                };
+            };
+        ```
 
-9. To schedule a meeting: scheduleMeeting(token: string, body: ScheduleMeetingType)
-   => https://api.meethour.io/api/{version}/meeting/schedulemeeting
 
-10. To edit an existing meeting: upcomingMeetings(token: string, body: {
-    limit: number;
-    page: number;
-    }
-    )
-    => https://api.meethour.io/api/{version}/meeting/upcomingmeetings
+4. To fetch User Details: => https://docs.v-empower.com/docs/MeetHour-API/ff9d0e37d9191-user-details
 
-11. To archive a meeting: archiveMeeting(
-    token: string,
-    body: {
-    id?: number;
-    }
-    )
-    => https://api.meethour.io/api/{version}/meeting/archivemeeting
+    ```bash
+        ApiServices.userDetails(token: string)
+    ```
 
-12. To get the details of a missed meeting: missedMeetings(
-    token: string,
-    body: {
-    limit: number;
-    page: number;
-    }
-    )
-    => https://api.meethour.io/api/{version}/meeting/missedmeetings
+5. To fetch access Token using Refresh Token: => https://docs.v-empower.com/docs/MeetHour-API/d851be1af9804-get-access-token-using-refresh-token
 
-13. To get completed meetings: completedMeetings(
-    token: string,
-    body: {
-    limit: number;
-    page: number;
-    }
-    )
-    => https://api.meethour.io/api/{version}/meeting/completedmeetings
+    ```bash
+        ApiServices.getRefreshToken(token: string, body: RefreshTokenType)
 
-14. To edit an existing meeting: editMeeting(token: string, body: EditMeetingType)
-    => https://api.meethour.io/api/{version}/meeting/editmeeting
+        type RefreshTokenType {
+                client_id: string;
+                client_secret: string;
+                grant_type: string;
+                refresh_token: string;
+        }
+    ```
 
-15. To view a meeting: viewMeeting(token: string, body: { meeting_id: string })
-    => https://api.meethour.io/api/{version}/meeting/viewmeeting
+6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
 
-16. To get all the recordings list: recordingsList(token: string, body: RecordingsList)
-    => https://api.meethour.io/api/{version}/customer/videorecordinglist
+    ```bash
+        ApiServices.addContact(token: string, body: AddContactType)
+
+        type AddContactType {
+                country_code?: string;
+                email: string;
+                firstname: string;
+                image?: string;
+                is_show_portal?: boolean;
+                lastname?: string;
+                phone?: string;
+            }
+    ```
+
+7. To get Timezones of various countries: => https://docs.v-empower.com/docs/MeetHour-API/c688c29bce9b9-timezone-list
+
+    ```bash
+        ApiServices.timezone(token: string)
+
+    ```
+
+8. To get list of all the contacts in your Meet Hour account: => https://api.meethour.io/api/{version}/customer/contacts
+
+    ```bash
+        ApiServices.contactsList(token: string, body: ContactsType)
+
+        type ContactsType {
+                exclude_hosts: number;
+                limit: number;
+                page: number;
+            }
+
+    ```
+
+9. To make changes in the existing contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
+
+       ```bash
+        ApiServices.editContact(token: string, body: EditContactType)
+
+        type EditContactType {
+                contact_id: number;
+                country_code: string;
+                email: string;
+                firstname: string;
+                image: string;
+                is_show_portal: boolean;
+                lastname: string;
+                phone: string;
+            }
+
+        ``` 
+
+10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
+
+    ```bash
+        ApiServices.upcomingMeetings(token: string, body: {
+            limit: number;
+            page: number;
+        })
+    ```
+
+11. To archive a meeting: => https://docs.v-empower.com/docs/MeetHour-API/1dd64523cc6bf-archive-meeting
+
+    ```bash
+        ApiServices.archiveMeeting(
+                token: string,
+                body: {
+                    id?: number;
+            })
+    ```
+
+12. To get the details of a missed meeting: => https://docs.v-empower.com/docs/MeetHour-API/92998e2dda102-missed-meetings
+
+    ```bash
+        ApiServices.missedMeetings(
+            token: string,
+            body: {
+                limit: number;
+                page: number;
+            })
+    ```
+
+13. To get completed meetings: => https://docs.v-empower.com/docs/MeetHour-API/aa9ef6a678250-completed-meetings
+
+    ```bash
+        ApiServices.completedMeetings(
+            token: string,
+            body: {
+            limit: number;
+            page: number;
+            })
+    ```
+
+14. To edit an existing meeting: => https://docs.v-empower.com/docs/MeetHour-API/5dedde36380b4-meeting-edit-meeting
+
+    ```bash
+        ApiServices.editMeeting(token: string, body: EditMeetingType)
+
+        type EditMeeting {
+            agenda?: string;
+            attend?:
+                | Array<number>
+                | Array<UserObjectType>
+                | Array<number & UserObjectType>;
+            duration_hr?: number;
+            duration_min?: number;
+            enable_pre_registration?: number;
+            endBy?: string;
+            end_date_time?: string;
+            groups?: Array<number>;
+            hostusers?:
+                | Array<number>
+                | Array<UserObjectType>
+                | Array<number & UserObjectType>;
+            instructions?: string;
+            is_recurring?: number;
+            is_show_portal?: number;
+            meeting_agenda?: string;
+            meeting_date?: string;
+            meeting_id: string;
+            meeting_meridiem?: string;
+            meeting_name?: string;
+            meeting_time?: string;
+            meeting_topic?: string;
+            old_attend?:
+                | Array<number>
+                | Array<UserObjectType>
+                | Array<number & UserObjectType>;
+            options?: Array<string>;
+            passcode?: string;
+            recurring_type?: string;
+            repeat_interval?: number;
+            timezone?: string;
+        }
+
+        type UserObjectType {
+            email?: string;
+            first_name?: string;
+            last_name?: string;
+        }
+    ```
+
+15. To view a meeting: => https://docs.v-empower.com/docs/MeetHour-API/7e9a0a1e0da7f-meeting-view-meeting
+
+    ```bash
+        ApiServices.viewMeeting(
+            token: string, 
+            body: { meeting_id: string }
+            )
+    ```
+
+16. To get all the recordings list: => https://docs.v-empower.com/docs/MeetHour-API/ce7c4fd8cae7e-recording-list
+
+
+    ```bash
+        ApiServices.recordingsList(token: string, body: RecordingsList)
+
+        type RecordingsList {
+            filter_by: string;
+            limit: number;
+            page: number;
+        }
+    ```
 
 ### Modules
 
 This library exposes two components with similar properties, intended for different use-cases.
 
-#### MeetHourMeeting
+#### MeetHourMeeting (Join Meeting Component)
 
 To be used with custom domains as-it-is in React projects:
 
 ```js
-<MeetHourMeeting domain={YOUR_DOMAIN} roomName={YOUR_ROOM_NAME} />
+<MeetHourMeeting domain={YOUR_DOMAIN} roomName={YOUR_ROOM_NAME} apiKey={} apiBaseUR={} jwt={} pcode={} />
 ```
 
 ##### Properties specific to the `MeetHourMeeting` component
@@ -128,9 +364,26 @@ To be used with custom domains as-it-is in React projects:
 
 Optional. Field used to retrieve the external_api.js file that initializes the IFrame. If omitted, defaults to `meethour.io`.
 
-###### `roomName`
+###### `roomName` (Meeting ID)
 
 Required. String used when joining the meeting.
+
+
+###### `apiKey` (Meeting ID)
+
+Required. You will get apiKey from Developers page of Meet Hour Dashboard (https://portal.meethour.io).
+
+###### `jwt`
+
+Optional. Pass JWT if Moderator is trying to join the call.
+
+###### `pcode`
+
+Optional. Encrypted passcode of Meet Hour Meeting.
+
+###### `apiBaseURL`
+
+Optional. api.meethour.io as your default value.
 
 ###### `getIFrameRef`
 
@@ -154,10 +407,6 @@ Optional. Callback triggered when the external API is loaded to expose it for ev
 />
 ```
 
-###### `jwt`
-
-Mandatory if Moderator is trying to join the call for authentication.
-
 ###### `onReadyToClose`
 
 Optional. Callback triggered when the meeting is ready to be closed.
@@ -177,9 +426,6 @@ Optional. Object used for options overrides.
 
 Optional. Object used for more options overrides.
 
-###### `jwt`
-
-Mandatory. Token for authentication.
 
 ###### `userInfo`
 
