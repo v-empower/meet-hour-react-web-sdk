@@ -51,17 +51,17 @@ Important points:
 
 1. To Get Access Token Endpoint : => https://docs.v-empower.com/docs/MeetHour-API/a44a7d7669f91-user-login-get-access-token
 
-        ```
-            ApiServices.login({
+    ```
+        ApiServices.login({
                 grant_type, client_id, client_secret, username, password
             });
-        ```
+    ```
    => You have to pass respective values in the argument section. Hence, to get desired response.
 
 2. To schedule a meeting: => https://docs.v-empower.com/docs/MeetHour-API/2de4b757a6312-meeting-schedule-meeting
 
-        ```
-            ApiServices. scheduleMeeting(token: string, body: ScheduleMeetingType)
+    ```
+        ApiServices. scheduleMeeting(token: string, body: ScheduleMeetingType)
 
             type ScheduleMeetingType {
                     agenda?: string;
@@ -109,12 +109,12 @@ Important points:
                 first_name?: string;
                 last_name?: string;
             }
-        ```
+    ```
 
 3. To Generate JWT Token Endpoint => https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
     
     ```
-    ApiServices.generateJwt(token: string, body: GenerateJwtType)
+        ApiServices.generateJwt(token: string, body: GenerateJwtType)
 
        type GenerateJwtType {
                 config?: {
@@ -158,7 +158,7 @@ Important points:
                 toolbar_buttons?: Array<string>;
                 };
             };
-        ```
+    ```
 
 
 4. To fetch User Details: => https://docs.v-empower.com/docs/MeetHour-API/ff9d0e37d9191-user-details
