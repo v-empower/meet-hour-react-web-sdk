@@ -1,6 +1,6 @@
 {
   "name": "meet-hour-react-web-sdk",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React SDK for the Meet Hour",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,7 +10,7 @@
     "lint-fix": "npm run lint -- --fix",
     "test": "jest",
     "watch": "watch 'npm run build' src",
-    "publish": "export NODE_ENV=production && webpack"
+    "release": "export NODE_ENV=production && webpack"
   },
   "repository": {
     "type": "git",
