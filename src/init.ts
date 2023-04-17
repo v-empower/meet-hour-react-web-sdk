@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_RELEASE, DEFAULT_DOMAIN } from './constants';
+import { API_BASE_URL, API_RELEASE } from './constants';
 import { MeetHourExternalAPI } from './types';
 
 const loadExternalApi = async (
