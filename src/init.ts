@@ -37,7 +37,7 @@ let scriptPromise: Promise<MeetHourExternalAPI>;
  * @returns {Promise<MeetHourExternalAPI>} - The MeetHourExternalAPI or an error
  */
 export const fetchExternalApi = (
-        domain: string = DEFAULT_DOMAIN,
+        domain: string = API_BASE_URL,
         apiKey: string,
         release?: string
 ): Promise<MeetHourExternalAPI> => {
