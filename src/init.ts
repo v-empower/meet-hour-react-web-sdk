@@ -15,7 +15,7 @@ const loadExternalApi = async (
     const releaseParam: string = release ? release : API_RELEASE;
 
     script.async = true;
-    script.src = `https:/${APIURL}/libs/${releaseParam}/external_api.min.js?v=${Date.now()}&apiKey=${apiKey}`;
+    script.src = `https://${APIURL}/libs/${releaseParam}/external_api.min.js?v=${Date.now()}&apiKey=${apiKey}`;
     script.onload = () => resolve(window.MeetHourExternalAPI);
     script.onerror = () => reject(new Error(`Script load error: ${script.src}`));
     document.head.appendChild(script as Node);
