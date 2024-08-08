@@ -65,7 +65,7 @@ const apiEndpointUrl = (baseUrl: string, endpoint: ApiEndpoint): string => {
     case 'missed_meetings':
         return `${baseUrl}/api/${API_VERSION}/meeting/missedmeetings`;
     case 'completed_meetings':
-        return `${baseUrl}/api/${API_VERSION}/meeting/completedmeeting`;
+        return `${baseUrl}/api/${API_VERSION}/meeting/completedmeetings`;
     case 'user_details':
         return `${baseUrl}/api/${API_VERSION}/customer/user_details`;
     case 'refresh_token':
