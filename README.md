@@ -29,7 +29,7 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 
 ## NPM Package
 ```
-[httpmeet-hour-react-web-sdk](https://www.npmjs.com/package/meet-hour-react-web-sdk)
+https://www.npmjs.com/package/meet-hour-react-web-sdk
 ```
 
 ## Install
