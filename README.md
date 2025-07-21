@@ -27,6 +27,11 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
 2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
 
+## NPM Package
+```
+[httpmeet-hour-react-web-sdk](https://www.npmjs.com/package/meet-hour-react-web-sdk)
+```
+
 ## Install
 
 ```
